@@ -12,25 +12,25 @@
  */
 
 const SubType = {
-    SOCKS : 'SOCKS',
-    HTTP : 'HTTP',
-    SHADOWSOCKS : 'SHADOWSOCKS',
-    VMESS : 'VMESS',
-    TROJAN : 'TROJAN',
-    HYSTERIA : 'HYSTERIA',
-    HYSTERIA2 : 'HYSTERIA2',
-    SHADOWTLS : 'SHADOWTLS',
-    VLESS : 'VLESS',
-    TUIC : 'TUIC',
+    SOCKS : 'socks',
+    HTTP : 'http',
+    SHADOWSOCKS : 'shadowsocks',
+    VMESS : 'vmess',
+    TROJAN : 'trojan',
+    HYSTERIA : 'hysteria',
+    HYSTERIA2 : 'hysteria2',
+    SHADOWTLS : 'shadowtls',
+    VLESS : 'vless',
+    TUIC : 'tuic',
 }
 
 const ConnProtocol = {
-    TCP : 'TCP',
-    UDP : 'UDP',
-    KCP : 'KCP',
-    WS : 'WS',
-    H2 : 'H2',
-    QUIC : 'QUIC',
+    TCP : 'tcp',
+    UDP : 'udp',
+    KCP : 'kcp',
+    WS : 'ws',
+    H2 : 'h2',
+    QUIC : 'quic',
 }
 
 /**
@@ -39,7 +39,7 @@ const ConnProtocol = {
  * @return string
  */
 function stoConnProtocol(s) {
-    return ConnProtocol[s.toUpperCase()];
+    return ConnProtocol[s.toLowerCase()];
 }
 
 class Node {
@@ -323,17 +323,19 @@ function parseHTTP(uri) {
     return new NodeHTTP(url.hostname, url.port, url.username, url.password, url.hash);
 }
 
-function genTLS(sni, fp, alpn, insecure) {
+function genTLS(host, sni, fp, alpn, insecure) {
     if(alpn != null) {
         return {
             "enabled": true,
             "insecure": insecure === 1,
+            "server_name": host,
             "alpn": alpn.split(","),
         }
     }
     return {
         "enabled": true,
         "insecure": insecure === 1,
+        "server_name": host,
     }
 }
 
@@ -451,6 +453,7 @@ export default {
         });
 
         let usedNodes = [];
+        let blkNode = new NodeHTTP("localhost", "256", "", "", "outbound is null");
 
         configObj["outbounds"].forEach((dic) => {
             if(dic["filter"] !== undefined && dic["outbounds"].includes("{sub}")) {
@@ -463,6 +466,7 @@ export default {
                 });
 
                 nodes.forEach((node) => {
+                    if (node.description === "outbound is null") return;
                     let flagInc = true;
                     let flagExc = true;
 
@@ -475,9 +479,17 @@ export default {
                     }
                 });
 
+                if(currentNodes.length === 0) {
+                    currentNodes.push(blkNode);
+                    if(!usedNodes.includes(blkNode)) usedNodes.push(blkNode);
+                }
+
                 currentNodes.forEach((node) => {
+                    if(node.description == null) return;
                     dic["outbounds"].push(node.description);
                 });
+                delete dic["filter"];
+                dic["outbounds"].splice(dic["outbounds"].findIndex(value => value === "{sub}"), 1);
             }
         });
 
@@ -492,7 +504,7 @@ export default {
                             "server_port": parseInt(node.port),
                             "uuid": node.uuid,
                             "security": node.seq === undefined ? "auto" : node.seq,
-                            "alter_id": node.aid,
+                            "alter_id": parseInt(node.aid),
                             "network": node.connProtocol,
                         });
                     }else {
@@ -503,9 +515,9 @@ export default {
                             "server_port": parseInt(node.port),
                             "uuid": node.uuid,
                             "security": node.seq === undefined ? "auto" : node.seq,
-                            "alter_id": node.aid,
+                            "alter_id": parseInt(node.aid),
                             "network": node.connProtocol,
-                            "tls": genTLS(node.sni, node.fp, node.alpn, false),
+                            "tls": genTLS(node.hostName, node.sni, node.fp, node.alpn, false),
                         });
                     }
 
@@ -518,7 +530,7 @@ export default {
                         "server_port": parseInt(node.port),
                         "password": node.pass,
                         "network": node.connProtocol,
-                        "tls": genTLS(null, null, node.alpn, node.allowInsecure),
+                        "tls": genTLS(node.hostName, null, null, node.alpn, node.allowInsecure),
                     });
                     break;
                 case SubType.VLESS:
@@ -531,7 +543,7 @@ export default {
                             "uuid": node.uuid,
                             "flow": node.flow,
                             "network": node.connProtocol,
-                            "tls": genTLS(node.sni, node.fp, node.alpn, false)
+                            "tls": genTLS(node.hostName, node.sni, node.fp, node.alpn, false)
                         });
                     }else {
                         configObj["outbounds"].push({
@@ -557,7 +569,7 @@ export default {
                         "network": node.connProtocol,
                         "udp_relay_mode": node.udp_relay_mode,
                         "congestion_control": node.congestion_control,
-                        "tls": genTLS(null, null, null, false)
+                        "tls": genTLS(node.hostName, null, null, null, false)
                     });
                     break;
                 case SubType.HYSTERIA:
@@ -566,24 +578,18 @@ export default {
                         "tag": node.description,
                         "server": node.hostName,
                         "server_port": parseInt(node.port),
-                        "up": node.upmbps + " Mbps",
                         "up_mbps": parseInt(node.upmbps),
-                        "down": node.downmbps + " Mbps",
                         "down_mbps": parseInt(node.downmbps),
                         "obfs": node.obfs,
                         "network": node.connProtocol,
-                        "tls": genTLS(node.sni, null, node.alpn, node.allowInsecure)
+                        "tls": genTLS(node.hostName, node.sni, null, node.alpn, node.allowInsecure)
                     });
                     break;
                 case SubType.HYSTERIA2:
                     configObj["outbounds"].push({
                         "type": node.subType,
-                        "tag": node.description,
-                        "server": node.hostName,
-                        "server_port": parseInt(node.port),
-                        "up": node.upmbps + " Mbps",
+
                         "up_mbps": parseInt(node.upmbps),
-                        "down": node.downmbps + " Mbps",
                         "down_mbps": parseInt(node.downmbps),
                         "obfs": {
                             "type": node.obfs != null ? "salamander" : "",
@@ -591,12 +597,22 @@ export default {
                         },
                         "password": node.auth,
                         "network": node.connProtocol,
-                        "tls": genTLS(node.sni, node.fp, node.alpn, node.allowInsecure)
+                        "tls": genTLS(node.hostName, node.sni, node.fp, node.alpn, node.allowInsecure)
                     });
                     break;
+                case SubType.HTTP:
+                    let appendNode = {
+                        "type": node.subType,
+                        "tag": node.description,
+                        "server": node.hostName,
+                        "server_port": parseInt(node.port),
+                    }
+                    if(node.pass != null) appendNode["password"] = node.pass;
+                    if(node.user != null) appendNode["username"] = node.user;
+                    configObj["outbounds"].push(appendNode);
             }
         });
-        return new Response(JSON.stringify(configObj), {
+        return new Response(JSON.stringify(configObj, null, '\t'), {
             headers: {
                 "content-type": "application/json",
             }, status: 200
