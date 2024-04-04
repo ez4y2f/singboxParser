@@ -1165,6 +1165,7 @@
         ],
         "outbound": "direct"
       }
-    ]
+    ],
+    "final": "direct",
   }
 }
