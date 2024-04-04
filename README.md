@@ -7,7 +7,7 @@
 git clone https://github.com/ez4y2f/singboxParser.git
 npm i -g wrangler
 wrangler login
-wrangler publish
+wrangler deploy
 ```
 then bind your domain
 ## Out of the box
