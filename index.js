@@ -575,7 +575,7 @@ export default {
                 case SubType.HYSTERIA:
                     configObj["outbounds"].push({
                         "type": node.subType,
-                        "tag": node.description,
+
                         "server": node.hostName,
                         "server_port": parseInt(node.port),
                         "up_mbps": parseInt(node.upmbps),
@@ -588,7 +588,7 @@ export default {
                 case SubType.HYSTERIA2:
                     configObj["outbounds"].push({
                         "type": node.subType,
-
+                        "tag": node.description,
                         "up_mbps": parseInt(node.upmbps),
                         "down_mbps": parseInt(node.downmbps),
                         "obfs": {
