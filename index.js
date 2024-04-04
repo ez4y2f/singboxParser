@@ -339,6 +339,8 @@ function genTLS(host, sni, fp, alpn, insecure) {
     }
 }
 
+var httpIndex = "<!DOCTYPE HTML><html lang=\"\"><body><h1><a href='https://github.com/ez4y2f/singboxParser'>Singbox Parser</a></h1>Running on cloudflare worker.<br><h2>Usage:</h2>request to [hostname]/parse?config=[YOUR_SUBSCRIPTION_LINK_BASE64]&template=[YOUR_CONFIG_LINK_BASE64] to get full config<br><h2>Feature:</h2><h3>{sub}</h3>{sub} in outbounds to get all subscription nodes<br><h3>Filter</h3>use filter in an outbound like that<br>filter: [<br>\t{<br>\t\t\"action\": \"include\",<br>\t\t\"regex\": [<br>\t\t\t[YOUR_REGEX]<br>\t\t]<br>\t},<br>\t\t\"action\": \"exclude\",<br>\t\t\"regex\": [<br>\t\t\t[YOUR_REGEX]<br>\t\t]<br>\t}<br>]</body></html>"
+
 export default {
     async fetch(request, env, ctx){
         const requrl = new URL(request.url);
@@ -359,10 +361,18 @@ export default {
         }
         */
 
+        if(requrl.pathname === "/") {
+            return new Response(httpIndex, {
+                headers: {
+                    "content-type": "text/html",
+                }, status: 200
+            });
+        }
+
         if (requrl.pathname !== "/parse") {
             return new Response(`error: i'm a teapot`, {
                 headers: {
-                    "content-type" : "text/plain",
+                    "content-type": "text/plain",
                 }, status: 405
             });
         }
