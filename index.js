@@ -36,7 +36,7 @@ const ConnProtocol = {
 /**
  * @function stoConnProtocol Convert string to ConnProtocol
  * @param s {string}
- * @return ConnProtocol
+ * @return string
  */
 function stoConnProtocol(s) {
     return ConnProtocol[s.toUpperCase()];
@@ -94,11 +94,11 @@ class NodeVMESS extends Node {
  */
 function parseVMESS(uri) {
     let url = new URL(uri);
-    if(url.protocol !== "vmess") {
+    if(url.protocol !== "vmess:") {
         return null;
     }
     let jsonObj = JSON.parse(atob(url.hostname));
-    return new NodeVMESS(stoConnProtocol(jsonObj["net"]), jsonObj["add"], jsonObj["port"], jsonObj["id"], jsonObj["aid"], jsonObj["scy"], jsonObj["tls"], jsonObj["sni"], jsonObj["fp"], jsonObj["alpn"], jsonObj["ps"]);
+    return new NodeVMESS(stoConnProtocol(jsonObj["net"] === undefined ? "TCP" : jsonObj["net"]), jsonObj["add"], jsonObj["port"], jsonObj["id"], jsonObj["aid"], jsonObj["scy"], jsonObj["tls"], jsonObj["sni"], jsonObj["fp"], jsonObj["alpn"], jsonObj["ps"]);
 }
 
 class NodeTrojan extends Node {
@@ -127,10 +127,10 @@ class NodeTrojan extends Node {
  */
 function parseTrojan(uri) {
     let url = new URL(uri);
-    if(url.protocol !== "trojan") {
+    if(url.protocol !== "trojan:") {
         return null;
     }
-    return new NodeTrojan(stoConnProtocol(url.searchParams.get("type")), url.hostname, url.port, url.password, url.searchParams.get("allowInsecure"), decodeURIComponent(url.searchParams.get("alpn")), decodeURIComponent(url.searchParams.get("name")));
+    return new NodeTrojan(stoConnProtocol(url.searchParams.get("type") == null ? "TCP" : url.searchParams.get("type")), url.hostname, url.port, url.password, url.searchParams.get("allowInsecure"), decodeURIComponent(url.searchParams.get("alpn")), decodeURIComponent(url.searchParams.get("name")));
 }
 
 class NodeVLESS extends Node {
@@ -167,10 +167,10 @@ class NodeVLESS extends Node {
  */
 function parseVLESS(uri) {
     let url = new URL(uri);
-    if(url.protocol !== "vless") {
+    if(url.protocol !== "vless:") {
         return null;
     }
-    return new NodeVLESS(stoConnProtocol(url.searchParams.get("type")), url.hostname, url.port, decodeURIComponent(url.username), url.searchParams.get("flow"), url.searchParams.get("security"), url.searchParams.get("encryption"), url.searchParams.get("sni"), url.searchParams.get("fp"), decodeURIComponent(url.searchParams.get("alpn")), decodeURIComponent(url.searchParams.get("descriptive-text") == null ? url.hash : url.searchParams.get("descriptive-text")));
+    return new NodeVLESS(stoConnProtocol(url.searchParams.get("type") == null ? "TCP" : url.searchParams.get("type")), url.hostname, url.port, decodeURIComponent(url.username), url.searchParams.get("flow"), url.searchParams.get("security"), url.searchParams.get("encryption"), url.searchParams.get("sni"), url.searchParams.get("fp"), decodeURIComponent(url.searchParams.get("alpn")), decodeURIComponent(url.searchParams.get("descriptive-text") == null ? url.hash : url.searchParams.get("descriptive-text")));
 }
 
 class NodeTUIC extends Node {
@@ -204,7 +204,7 @@ class NodeTUIC extends Node {
  */
 function parseTUIC(uri) {
     let url = new URL(uri);
-    if(url.protocol !== "tuic") {
+    if(url.protocol !== "tuic:") {
         return null;
     }
     return new NodeTUIC(ConnProtocol.QUIC, url.hostname, url.port, decodeURIComponent(url.username), url.password, url.searchParams.get("udp_relay_mode"), url.searchParams.get("congestion_control"), url.searchParams.get("allow_insecure"), url.hash);
@@ -244,10 +244,10 @@ class NodeHysteria extends Node {
  */
 function parseHysteria(uri) {
     let url = new URL(uri);
-    if(url.protocol !== "hysteria") {
+    if(url.protocol !== "hysteria:") {
         return null;
     }
-    return new NodeHysteria(stoConnProtocol(url.searchParams.get("protocol")), url.hostname, url.port, url.searchParams.get("auth"), url.searchParams.get("insecure"), url.searchParams.get("upmbps"), url.searchParams.get("downmbps"), url.searchParams.get("peer"), decodeURIComponent(url.searchParams.get("obfs")), url.searchParams.get("alpn"), url.hash);
+    return new NodeHysteria(stoConnProtocol(url.searchParams.get("protocol") == null ? "QUIC" : url.searchParams.get("protocol")), url.hostname, url.port, url.searchParams.get("auth"), url.searchParams.get("insecure"), url.searchParams.get("upmbps"), url.searchParams.get("downmbps"), url.searchParams.get("peer"), decodeURIComponent(url.searchParams.get("obfs")), url.searchParams.get("alpn"), url.hash);
 }
 
 class NodeHysteria2 extends Node {
@@ -288,10 +288,10 @@ class NodeHysteria2 extends Node {
  */
 function parseHysteria2(uri) {
     let url = new URL(uri);
-    if(url.protocol !== "hysteria2") {
+    if(url.protocol !== "hysteria2:") {
         return null;
     }
-    return new NodeHysteria2(url.searchParams.get("protocol").toUpperCase(), url.hostname, url.port, url.password, url.searchParams.get("insecure"), url.searchParams.get("upmbps"), url.searchParams.get("downmbps"), url.searchParams.get("sni"), decodeURIComponent(url.searchParams.get("obfs")), url.searchParams.get("obfs-password"), url.searchParams.get("pinSHA256"), url.searchParams.get("alpn"), url.hash);
+    return new NodeHysteria2(stoConnProtocol(url.searchParams.get("protocol") == null ? "QUIC" : url.searchParams.get("protocol")), url.hostname, url.port, url.password, url.searchParams.get("insecure"), url.searchParams.get("upmbps"), url.searchParams.get("downmbps"), url.searchParams.get("sni"), decodeURIComponent(url.searchParams.get("obfs")), url.searchParams.get("obfs-password"), url.searchParams.get("pinSHA256"), url.searchParams.get("alpn"), url.hash);
 }
 
 class NodeHTTP extends Node {
@@ -317,7 +317,7 @@ class NodeHTTP extends Node {
  */
 function parseHTTP(uri) {
     let url = new URL(uri);
-    if(url.protocol !== "http") {
+    if(url.protocol !== "http:") {
         return null;
     }
     return new NodeHTTP(url.hostname, url.port, url.username, url.password, url.hash);
@@ -407,7 +407,7 @@ export default {
         let templateResp = await fetch(templateURL);
 
         if (configResp.status !== 200 || templateResp.status !== 200) {
-            return new Response(`error: Fetch error`, {
+            return new Response(`error: Fetch error, config ${configResp.status}, template ${templateResp.status}`, {
                 headers: {
                     "content-type": "text/plain",
                 }, status: configResp.status
@@ -423,27 +423,28 @@ export default {
 
 
         subscriptions.forEach((str) => {
+            if(str === "") return;
             let url = new URL(str);
             switch(url.protocol) {
-                case "vmess":
+                case "vmess:":
                     nodes.push(parseVMESS(str));
                     break;
-                case "trojan":
+                case "trojan:":
                     nodes.push(parseTrojan(str));
                     break;
-                case "vless":
+                case "vless:":
                     nodes.push(parseVLESS(str));
                     break;
-                case "tuic":
+                case "tuic:":
                     nodes.push(parseTUIC(str));
                     break;
-                case "hysteria":
+                case "hysteria:":
                     nodes.push(parseHysteria(str));
                     break;
-                case "hysteria2":
+                case "hysteria2:":
                     nodes.push(parseHysteria2(str));
                     break;
-                case "http":
+                case "http:":
                     nodes.push(parseHTTP(str));
                     break;
             }
@@ -460,8 +461,15 @@ export default {
                     if(dic0["action"] === "include") regInc = new RegExp(dic0["regex"][0]);
                     else regExc = new RegExp(dic0["regex"][0]);
                 });
+
                 nodes.forEach((node) => {
-                    if(regInc.test(node.description) && !(regExc.test(node.description))) {
+                    let flagInc = true;
+                    let flagExc = true;
+
+                    if(regInc != null) flagInc = regInc.test(node.description);
+                    if(regExc != null) flagExc = !(regExc.test(node.description));
+
+                    if(flagInc && flagExc) {
                         currentNodes.push(node);
                         if(!usedNodes.includes(node)) usedNodes.push(node);
                     }
