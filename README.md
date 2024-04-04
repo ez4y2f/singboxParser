@@ -1,5 +1,6 @@
 # Singbox Parser
 ### A utily tool to modify singbox's config by subscribe like the "parser" in CFW
+#### [More infomation](https://y2f.xyz/2024/04/04/%e9%83%a8%e7%bd%b2%e5%9c%a8worker%e4%b8%8a%e7%9a%84singbox-parser/)
 ## Usage
 `https://<your-domain>/parse?config=<base64-subscribe-url>&template=<base64-template-url>`
 ## Setup
