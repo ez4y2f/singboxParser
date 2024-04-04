@@ -331,7 +331,7 @@
     },
     {
       "type": "selector",
-      "tag": "hackThebox",
+      "tag": "hackTheBox",
       "outbounds": [
         "Auto",
         "proxy",
