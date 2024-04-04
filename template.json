@@ -109,10 +109,10 @@
       "outbounds": [
         "{sub}"
       ],
-      "regex": [
+      "filter": [
         {
           "action": "exclude",
-          "keywords": [
+          "regex": [
             "Hong Kong|Taiwan|Japan|America|Singapore|Korea|Russia|Philippines|Malaysia|Indonesia|Vietnam|Thailand|India|Australia|United Kingdom|Germany|French|Netherlands|Spain|Türkiye|Argentina|Brazil|Canada|direct|proxy"
           ]
         }
@@ -353,16 +353,16 @@
       "outbounds": [
         "{sub}"
       ],
-      "regex": [
+      "filter": [
         {
           "action": "exclude",
-          "keywords": [
+          "regex": [
             "Hong Kong|Taiwan|Japan|America|Singapore|Korea|Russia|Philippines|Malaysia|Indonesia|Vietnam|Thailand|India|Australia|United Kingdom|Germany|French|Netherlands|Spain|Türkiye|Argentina|Brazil|Canada|direct|proxy|海外专用"
           ]
         },
         {
           "action": "include",
-          "keywords": [
+          "regex": [
             "香港"
           ]
         }
@@ -374,16 +374,16 @@
       "outbounds": [
         "{sub}"
       ],
-      "regex": [
+      "filter": [
         {
           "action": "exclude",
-          "keywords": [
+          "regex": [
             "Hong Kong|Taiwan|Japan|America|Singapore|Korea|Russia|Philippines|Malaysia|Indonesia|Vietnam|Thailand|India|Australia|United Kingdom|Germany|French|Netherlands|Spain|Türkiye|Argentina|Brazil|Canada|direct|proxy|海外专用"
           ]
         },
         {
           "action": "include",
-          "keywords": [
+          "regex": [
             "台湾"
           ]
         }
@@ -395,16 +395,16 @@
       "outbounds": [
         "{sub}"
       ],
-      "regex": [
+      "filter": [
         {
           "action": "exclude",
-          "keywords": [
+          "regex": [
             "Hong Kong|Taiwan|Japan|America|Singapore|Korea|Russia|Philippines|Malaysia|Indonesia|Vietnam|Thailand|India|Australia|United Kingdom|Germany|French|Netherlands|Spain|Türkiye|Argentina|Brazil|Canada|direct|proxy|海外专用"
           ]
         },
         {
           "action": "include",
-          "keywords": [
+          "regex": [
             "日本"
           ]
         }
@@ -416,16 +416,16 @@
       "outbounds": [
         "{sub}"
       ],
-      "regex": [
+      "filter": [
         {
           "action": "exclude",
-          "keywords": [
+          "regex": [
             "Hong Kong|Taiwan|Japan|America|Singapore|Korea|Russia|Philippines|Malaysia|Indonesia|Vietnam|Thailand|India|Australia|United Kingdom|Germany|French|Netherlands|Spain|Türkiye|Argentina|Brazil|Canada|direct|proxy|海外专用"
           ]
         },
         {
           "action": "include",
-          "keywords": [
+          "regex": [
             "美国"
           ]
         }
@@ -437,16 +437,16 @@
       "outbounds": [
         "{sub}"
       ],
-      "regex": [
+      "filter": [
         {
           "action": "exclude",
-          "keywords": [
+          "regex": [
             "Hong Kong|Taiwan|Japan|America|Singapore|Korea|Russia|Philippines|Malaysia|Indonesia|Vietnam|Thailand|India|Australia|United Kingdom|Germany|French|Netherlands|Spain|Türkiye|Argentina|Brazil|Canada|direct|proxy|海外专用"
           ]
         },
         {
           "action": "include",
-          "keywords": [
+          "regex": [
             "新加坡"
           ]
         }
@@ -458,16 +458,16 @@
       "outbounds": [
         "{sub}"
       ],
-      "regex": [
+      "filter": [
         {
           "action": "exclude",
-          "keywords": [
+          "regex": [
             "Hong Kong|Taiwan|Japan|America|Singapore|Korea|Russia|Philippines|Malaysia|Indonesia|Vietnam|Thailand|India|Australia|United Kingdom|Germany|French|Netherlands|Spain|Türkiye|Argentina|Brazil|Canada|direct|proxy|海外专用"
           ]
         },
         {
           "action": "include",
-          "keywords": [
+          "regex": [
             "韩国"
           ]
         }
@@ -479,16 +479,16 @@
       "outbounds": [
         "{sub}"
       ],
-      "regex": [
+      "filter": [
         {
           "action": "exclude",
-          "keywords": [
+          "regex": [
             "Hong Kong|Taiwan|Japan|America|Singapore|Korea|Russia|Philippines|Malaysia|Indonesia|Vietnam|Thailand|India|Australia|United Kingdom|Germany|French|Netherlands|Spain|Türkiye|Argentina|Brazil|Canada|direct|proxy|海外专用"
           ]
         },
         {
           "action": "include",
-          "keywords": [
+          "regex": [
             "俄罗斯"
           ]
         }
@@ -500,16 +500,16 @@
       "outbounds": [
         "{sub}"
       ],
-      "regex": [
+      "filter": [
         {
           "action": "exclude",
-          "keywords": [
+          "regex": [
             "Hong Kong|Taiwan|Japan|America|Singapore|Korea|Russia|Philippines|Malaysia|Indonesia|Vietnam|Thailand|India|Australia|United Kingdom|Germany|French|Netherlands|Spain|Türkiye|Argentina|Brazil|Canada|direct|proxy|海外专用"
           ]
         },
         {
           "action": "include",
-          "keywords": [
+          "regex": [
             "菲律宾"
           ]
         }
@@ -521,16 +521,16 @@
       "outbounds": [
         "{sub}"
       ],
-      "regex": [
+      "filter": [
         {
           "action": "exclude",
-          "keywords": [
+          "regex": [
             "Hong Kong|Taiwan|Japan|America|Singapore|Korea|Russia|Philippines|Malaysia|Indonesia|Vietnam|Thailand|India|Australia|United Kingdom|Germany|French|Netherlands|Spain|Türkiye|Argentina|Brazil|Canada|direct|proxy|海外专用"
           ]
         },
         {
           "action": "include",
-          "keywords": [
+          "regex": [
             "马来西亚"
           ]
         }
@@ -542,16 +542,16 @@
       "outbounds": [
         "{sub}"
       ],
-      "regex": [
+      "filter": [
         {
           "action": "exclude",
-          "keywords": [
+          "regex": [
             "Hong Kong|Taiwan|Japan|America|Singapore|Korea|Russia|Philippines|Malaysia|Indonesia|Vietnam|Thailand|India|Australia|United Kingdom|Germany|French|Netherlands|Spain|Türkiye|Argentina|Brazil|Canada|direct|proxy|海外专用"
           ]
         },
         {
           "action": "include",
-          "keywords": [
+          "regex": [
             "印尼"
           ]
         }
@@ -563,16 +563,16 @@
       "outbounds": [
         "{sub}"
       ],
-      "regex": [
+      "filter": [
         {
           "action": "exclude",
-          "keywords": [
+          "regex": [
             "Hong Kong|Taiwan|Japan|America|Singapore|Korea|Russia|Philippines|Malaysia|Indonesia|Vietnam|Thailand|India|Australia|United Kingdom|Germany|French|Netherlands|Spain|Türkiye|Argentina|Brazil|Canada|direct|proxy|海外专用"
           ]
         },
         {
           "action": "include",
-          "keywords": [
+          "regex": [
             "越南"
           ]
         }
@@ -584,16 +584,16 @@
       "outbounds": [
         "{sub}"
       ],
-      "regex": [
+      "filter": [
         {
           "action": "exclude",
-          "keywords": [
+          "regex": [
             "Hong Kong|Taiwan|Japan|America|Singapore|Korea|Russia|Philippines|Malaysia|Indonesia|Vietnam|Thailand|India|Australia|United Kingdom|Germany|French|Netherlands|Spain|Türkiye|Argentina|Brazil|Canada|direct|proxy|海外专用"
           ]
         },
         {
           "action": "include",
-          "keywords": [
+          "regex": [
             "泰国"
           ]
         }
@@ -605,16 +605,16 @@
       "outbounds": [
         "{sub}"
       ],
-      "regex": [
+      "filter": [
         {
           "action": "exclude",
-          "keywords": [
+          "regex": [
             "Hong Kong|Taiwan|Japan|America|Singapore|Korea|Russia|Philippines|Malaysia|Indonesia|Vietnam|Thailand|India|Australia|United Kingdom|Germany|French|Netherlands|Spain|Türkiye|Argentina|Brazil|Canada|direct|proxy|海外专用"
           ]
         },
         {
           "action": "include",
-          "keywords": [
+          "regex": [
             "印度"
           ]
         }
@@ -626,16 +626,16 @@
       "outbounds": [
         "{sub}"
       ],
-      "regex": [
+      "filter": [
         {
           "action": "exclude",
-          "keywords": [
+          "regex": [
             "Hong Kong|Taiwan|Japan|America|Singapore|Korea|Russia|Philippines|Malaysia|Indonesia|Vietnam|Thailand|India|Australia|United Kingdom|Germany|French|Netherlands|Spain|Türkiye|Argentina|Brazil|Canada|direct|proxy|海外专用"
           ]
         },
         {
           "action": "include",
-          "keywords": [
+          "regex": [
             "澳洲"
           ]
         }
@@ -647,16 +647,16 @@
       "outbounds": [
         "{sub}"
       ],
-      "regex": [
+      "filter": [
         {
           "action": "exclude",
-          "keywords": [
+          "regex": [
             "Hong Kong|Taiwan|Japan|America|Singapore|Korea|Russia|Philippines|Malaysia|Indonesia|Vietnam|Thailand|India|Australia|United Kingdom|Germany|French|Netherlands|Spain|Türkiye|Argentina|Brazil|Canada|direct|proxy|海外专用"
           ]
         },
         {
           "action": "include",
-          "keywords": [
+          "regex": [
             "英国"
           ]
         }
@@ -668,16 +668,16 @@
       "outbounds": [
         "{sub}"
       ],
-      "regex": [
+      "filter": [
         {
           "action": "exclude",
-          "keywords": [
+          "regex": [
             "Hong Kong|Taiwan|Japan|America|Singapore|Korea|Russia|Philippines|Malaysia|Indonesia|Vietnam|Thailand|India|Australia|United Kingdom|Germany|French|Netherlands|Spain|Türkiye|Argentina|Brazil|Canada|direct|proxy|海外专用"
           ]
         },
         {
           "action": "include",
-          "keywords": [
+          "regex": [
             "德国"
           ]
         }
@@ -689,16 +689,16 @@
       "outbounds": [
         "{sub}"
       ],
-      "regex": [
+      "filter": [
         {
           "action": "exclude",
-          "keywords": [
+          "regex": [
             "Hong Kong|Taiwan|Japan|America|Singapore|Korea|Russia|Philippines|Malaysia|Indonesia|Vietnam|Thailand|India|Australia|United Kingdom|Germany|French|Netherlands|Spain|Türkiye|Argentina|Brazil|Canada|direct|proxy|海外专用"
           ]
         },
         {
           "action": "include",
-          "keywords": [
+          "regex": [
             "法国"
           ]
         }
@@ -710,16 +710,16 @@
       "outbounds": [
         "{sub}"
       ],
-      "regex": [
+      "filter": [
         {
           "action": "exclude",
-          "keywords": [
+          "regex": [
             "Hong Kong|Taiwan|Japan|America|Singapore|Korea|Russia|Philippines|Malaysia|Indonesia|Vietnam|Thailand|India|Australia|United Kingdom|Germany|French|Netherlands|Spain|Türkiye|Argentina|Brazil|Canada|direct|proxy|海外专用"
           ]
         },
         {
           "action": "include",
-          "keywords": [
+          "regex": [
             "荷兰"
           ]
         }
@@ -731,16 +731,16 @@
       "outbounds": [
         "{sub}"
       ],
-      "regex": [
+      "filter": [
         {
           "action": "exclude",
-          "keywords": [
+          "regex": [
             "Hong Kong|Taiwan|Japan|America|Singapore|Korea|Russia|Philippines|Malaysia|Indonesia|Vietnam|Thailand|India|Australia|United Kingdom|Germany|French|Netherlands|Spain|Türkiye|Argentina|Brazil|Canada|direct|proxy|海外专用"
           ]
         },
         {
           "action": "include",
-          "keywords": [
+          "regex": [
             "西班牙"
           ]
         }
@@ -752,16 +752,16 @@
       "outbounds": [
         "{sub}"
       ],
-      "regex": [
+      "filter": [
         {
           "action": "exclude",
-          "keywords": [
+          "regex": [
             "Hong Kong|Taiwan|Japan|America|Singapore|Korea|Russia|Philippines|Malaysia|Indonesia|Vietnam|Thailand|India|Australia|United Kingdom|Germany|French|Netherlands|Spain|Türkiye|Argentina|Brazil|Canada|direct|proxy|海外专用"
           ]
         },
         {
           "action": "include",
-          "keywords": [
+          "regex": [
             "土耳其"
           ]
         }
@@ -773,16 +773,16 @@
       "outbounds": [
         "{sub}"
       ],
-      "regex": [
+      "filter": [
         {
           "action": "exclude",
-          "keywords": [
+          "regex": [
             "Hong Kong|Taiwan|Japan|America|Singapore|Korea|Russia|Philippines|Malaysia|Indonesia|Vietnam|Thailand|India|Australia|United Kingdom|Germany|French|Netherlands|Spain|Türkiye|Argentina|Brazil|Canada|direct|proxy|海外专用"
           ]
         },
         {
           "action": "include",
-          "keywords": [
+          "regex": [
             "阿根廷"
           ]
         }
@@ -794,16 +794,16 @@
       "outbounds": [
         "{sub}"
       ],
-      "regex": [
+      "filter": [
         {
           "action": "exclude",
-          "keywords": [
+          "regex": [
             "Hong Kong|Taiwan|Japan|America|Singapore|Korea|Russia|Philippines|Malaysia|Indonesia|Vietnam|Thailand|India|Australia|United Kingdom|Germany|French|Netherlands|Spain|Türkiye|Argentina|Brazil|Canada|direct|proxy|海外专用"
           ]
         },
         {
           "action": "include",
-          "keywords": [
+          "regex": [
             "巴西"
           ]
         }
@@ -815,16 +815,16 @@
       "outbounds": [
         "{sub}"
       ],
-      "regex": [
+      "filter": [
         {
           "action": "exclude",
-          "keywords": [
+          "regex": [
             "Hong Kong|Taiwan|Japan|America|Singapore|Korea|Russia|Philippines|Malaysia|Indonesia|Vietnam|Thailand|India|Australia|United Kingdom|Germany|French|Netherlands|Spain|Türkiye|Argentina|Brazil|Canada|direct|proxy|海外专用"
           ]
         },
         {
           "action": "include",
-          "keywords": [
+          "regex": [
             "加拿大"
           ]
         }
