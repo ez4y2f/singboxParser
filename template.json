@@ -107,7 +107,7 @@
       "type": "selector",
       "tag": "proxy",
       "outbounds": [
-        "{all}"
+        "{sub}"
       ],
       "filter": [
         {
@@ -351,7 +351,7 @@
       "type": "urltest",
       "tag": "Hong Kong🇭🇰",
       "outbounds": [
-        "{all}"
+        "{sub}"
       ],
       "filter": [
         {
@@ -372,7 +372,7 @@
       "type": "urltest",
       "tag": "Taiwan",
       "outbounds": [
-        "{all}"
+        "{sub}"
       ],
       "filter": [
         {
@@ -393,7 +393,7 @@
       "type": "urltest",
       "tag": "Japan🇯🇵",
       "outbounds": [
-        "{all}"
+        "{sub}"
       ],
       "filter": [
         {
@@ -414,7 +414,7 @@
       "type": "urltest",
       "tag": "America🇺🇸",
       "outbounds": [
-        "{all}"
+        "{sub}"
       ],
       "filter": [
         {
@@ -435,7 +435,7 @@
       "type": "urltest",
       "tag": "Singapore🇸🇬",
       "outbounds": [
-        "{all}"
+        "{sub}"
       ],
       "filter": [
         {
@@ -456,7 +456,7 @@
       "type": "urltest",
       "tag": "Korea🇰🇷",
       "outbounds": [
-        "{all}"
+        "{sub}"
       ],
       "filter": [
         {
@@ -477,7 +477,7 @@
       "type": "urltest",
       "tag": "Russia🇷🇺",
       "outbounds": [
-        "{all}"
+        "{sub}"
       ],
       "filter": [
         {
@@ -498,7 +498,7 @@
       "type": "urltest",
       "tag": "Philippines🇵🇭",
       "outbounds": [
-        "{all}"
+        "{sub}"
       ],
       "filter": [
         {
@@ -519,7 +519,7 @@
       "type": "urltest",
       "tag": "Malaysia🇲🇾",
       "outbounds": [
-        "{all}"
+        "{sub}"
       ],
       "filter": [
         {
@@ -540,7 +540,7 @@
       "type": "urltest",
       "tag": "Indonesia🇮🇩",
       "outbounds": [
-        "{all}"
+        "{sub}"
       ],
       "filter": [
         {
@@ -561,7 +561,7 @@
       "type": "urltest",
       "tag": "Vietnam🇻🇳",
       "outbounds": [
-        "{all}"
+        "{sub}"
       ],
       "filter": [
         {
@@ -582,7 +582,7 @@
       "type": "urltest",
       "tag": "Thailand🇹🇭",
       "outbounds": [
-        "{all}"
+        "{sub}"
       ],
       "filter": [
         {
@@ -603,7 +603,7 @@
       "type": "urltest",
       "tag": "India🇮🇳",
       "outbounds": [
-        "{all}"
+        "{sub}"
       ],
       "filter": [
         {
@@ -624,7 +624,7 @@
       "type": "urltest",
       "tag": "Australia🇦🇺",
       "outbounds": [
-        "{all}"
+        "{sub}"
       ],
       "filter": [
         {
@@ -645,7 +645,7 @@
       "type": "urltest",
       "tag": "United Kingdom🇬🇧",
       "outbounds": [
-        "{all}"
+        "{sub}"
       ],
       "filter": [
         {
@@ -666,7 +666,7 @@
       "type": "urltest",
       "tag": "Germany🇩🇪",
       "outbounds": [
-        "{all}"
+        "{sub}"
       ],
       "filter": [
         {
@@ -687,7 +687,7 @@
       "type": "urltest",
       "tag": "French🇫🇷",
       "outbounds": [
-        "{all}"
+        "{sub}"
       ],
       "filter": [
         {
@@ -708,7 +708,7 @@
       "type": "urltest",
       "tag": "Netherlands🇳🇱",
       "outbounds": [
-        "{all}"
+        "{sub}"
       ],
       "filter": [
         {
@@ -729,7 +729,7 @@
       "type": "urltest",
       "tag": "Spain🇪🇸",
       "outbounds": [
-        "{all}"
+        "{sub}"
       ],
       "filter": [
         {
@@ -750,7 +750,7 @@
       "type": "urltest",
       "tag": "Türkiye🇹🇷",
       "outbounds": [
-        "{all}"
+        "{sub}"
       ],
       "filter": [
         {
@@ -771,7 +771,7 @@
       "type": "urltest",
       "tag": "Argentina🇦🇷",
       "outbounds": [
-        "{all}"
+        "{sub}"
       ],
       "filter": [
         {
@@ -792,7 +792,7 @@
       "type": "urltest",
       "tag": "Brazil🇧🇷",
       "outbounds": [
-        "{all}"
+        "{sub}"
       ],
       "filter": [
         {
@@ -813,7 +813,7 @@
       "type": "urltest",
       "tag": "Canada🇨🇦",
       "outbounds": [
-        "{all}"
+        "{sub}"
       ],
       "filter": [
         {
