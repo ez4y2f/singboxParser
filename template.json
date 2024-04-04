@@ -1,0 +1,1170 @@
+{
+  "dns": {
+    "servers": [
+      {
+        "tag": "dns_proxy",
+        "address": "https://1.1.1.1/dns-query",
+        "strategy": "ipv4_only",
+        "detour": "Auto"
+      },
+      {
+        "tag": "dns_direct",
+        "address": "h3://dns.alidns.com/dns-query",
+        "address_resolver": "dns_resolver",
+        "strategy": "ipv4_only",
+        "detour": "direct"
+      },
+      {
+        "tag": "dns_block",
+        "address": "rcode://refused"
+      },
+      {
+        "tag": "dns_resolver",
+        "address": "223.5.5.5",
+        "strategy": "ipv4_only",
+        "detour": "direct"
+      }
+    ],
+    "rules": [
+      {
+        "outbound": "any",
+        "server": "dns_resolver"
+      },
+      {
+        "clash_mode": "direct",
+        "server": "dns_direct"
+      },
+      {
+        "clash_mode": "global",
+        "server": "dns_proxy"
+      },
+      {
+        "process_name": [
+          "TencentMeeting",
+          "NemoDesktop",
+          "ToDesk",
+          "ToDesk_Service",
+          "WeChat",
+          "Tailscale",
+          "wireguard-go",
+          "Tunnelblick",
+          "softwareupdated",
+          "kubectl"
+        ],
+        "server": "dns_direct"
+      },
+      {
+        "domain_suffix": [
+          "cdn.jsdelivr.us"
+        ],
+        "server": "dns_direct"
+      },
+      {
+        "outbound": [
+          "proxy",
+          "Auto"
+        ],
+        "server": "dns_proxy"
+      }
+    ],
+    "final": "dns_direct"
+  },
+  "ntp": {
+    "enabled": true,
+    "server": "time.apple.com",
+    "server_port": 123,
+    "interval": "30m0s",
+    "detour": "direct"
+  },
+  "inbounds": [
+    {
+      "type": "mixed",
+      "tag": "mixed-in",
+      "listen": "127.0.0.1",
+      "listen_port": 7890,
+      "sniff": true,
+      "sniff_override_destination": false,
+      "set_system_proxy": false
+    },
+    {
+      "type": "tun",
+      "inet4_address": "198.18.0.1/30",
+      "inet6_address": "fdfe:01f6:45fe:0::1/64",
+      "auto_route": true,
+      "stack": "mixed",
+      "sniff": true,
+      "platform": {
+        "http_proxy": {
+          "enabled": true,
+          "server": "127.0.0.1",
+          "server_port": 7890
+        }
+      }
+    }
+  ],
+  "outbounds": [
+    {
+      "type": "selector",
+      "tag": "proxy",
+      "outbounds": [
+        "{all}"
+      ],
+      "filter": [
+        {
+          "action": "exclude",
+          "keywords": [
+            "Hong Kong|Taiwan|Japan|America|Singapore|Korea|Russia|Philippines|Malaysia|Indonesia|Vietnam|Thailand|India|Australia|United Kingdom|Germany|French|Netherlands|Spain|Türkiye|Argentina|Brazil|Canada|direct|proxy"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "selector",
+      "tag": "Auto",
+      "outbounds": [
+        "Hong Kong🇭🇰",
+        "Taiwan",
+        "Japan🇯🇵",
+        "America🇺🇸",
+        "Singapore🇸🇬",
+        "Korea🇰🇷",
+        "Russia🇷🇺",
+        "Philippines🇵🇭",
+        "Malaysia🇲🇾",
+        "Indonesia🇮🇩",
+        "Vietnam🇻🇳",
+        "Thailand🇹🇭",
+        "India🇮🇳",
+        "Australia🇦🇺",
+        "United Kingdom🇬🇧",
+        "Germany🇩🇪",
+        "French🇫🇷",
+        "Netherlands🇳🇱",
+        "Spain🇪🇸",
+        "Türkiye🇹🇷",
+        "Argentina🇦🇷",
+        "Brazil🇧🇷",
+        "Canada🇨🇦",
+        "direct",
+        "proxy"
+      ]
+    },
+    {
+      "type": "selector",
+      "tag": "discord",
+      "outbounds": [
+        "Auto",
+        "proxy",
+        "direct"
+      ]
+    },
+    {
+      "type": "selector",
+      "tag": "github",
+      "outbounds": [
+        "Auto",
+        "proxy",
+        "direct"
+      ]
+    },
+    {
+      "type": "selector",
+      "tag": "genshin",
+      "outbounds": [
+        "Auto",
+        "proxy",
+        "direct"
+      ]
+    },
+    {
+      "type": "selector",
+      "tag": "google",
+      "outbounds": [
+        "Auto",
+        "proxy",
+        "direct"
+      ]
+    },
+    {
+      "type": "selector",
+      "tag": "openAI",
+      "outbounds": [
+        "Auto",
+        "proxy",
+        "direct"
+      ]
+    },
+    {
+      "type": "selector",
+      "tag": "hoyolab",
+      "outbounds": [
+        "Auto",
+        "proxy",
+        "direct"
+      ]
+    },
+    {
+      "type": "selector",
+      "tag": "instagram",
+      "outbounds": [
+        "Auto",
+        "proxy",
+        "direct"
+      ]
+    },
+    {
+      "type": "selector",
+      "tag": "netflix",
+      "outbounds": [
+        "Auto",
+        "proxy",
+        "direct"
+      ]
+    },
+    {
+      "type": "selector",
+      "tag": "pixiv",
+      "outbounds": [
+        "Auto",
+        "proxy",
+        "direct"
+      ]
+    },
+    {
+      "type": "selector",
+      "tag": "spotify",
+      "outbounds": [
+        "Auto",
+        "proxy",
+        "direct"
+      ]
+    },
+    {
+      "type": "selector",
+      "tag": "wikipedia",
+      "outbounds": [
+        "Auto",
+        "proxy",
+        "direct"
+      ]
+    },
+    {
+      "type": "selector",
+      "tag": "twitter",
+      "outbounds": [
+        "Auto",
+        "proxy",
+        "direct"
+      ]
+    },
+    {
+      "type": "selector",
+      "tag": "reddit",
+      "outbounds": [
+        "Auto",
+        "proxy",
+        "direct"
+      ]
+    },
+    {
+      "type": "selector",
+      "tag": "telegram",
+      "outbounds": [
+        "Auto",
+        "proxy",
+        "direct"
+      ]
+    },
+    {
+      "type": "selector",
+      "tag": "twitch",
+      "outbounds": [
+        "Auto",
+        "proxy",
+        "direct"
+      ]
+    },
+    {
+      "type": "selector",
+      "tag": "youTube",
+      "outbounds": [
+        "Auto",
+        "proxy",
+        "direct"
+      ]
+    },
+    {
+      "type": "selector",
+      "tag": "steamdb",
+      "outbounds": [
+        "Auto",
+        "proxy",
+        "direct"
+      ]
+    },
+    {
+      "type": "selector",
+      "tag": "xPlane",
+      "outbounds": [
+        "Auto",
+        "proxy",
+        "direct"
+      ]
+    },
+    {
+      "type": "selector",
+      "tag": "phigros",
+      "outbounds": [
+        "Auto",
+        "proxy",
+        "direct"
+      ]
+    },
+    {
+      "type": "selector",
+      "tag": "dilong",
+      "outbounds": [
+        "Auto",
+        "proxy",
+        "direct"
+      ]
+    },
+    {
+      "type": "selector",
+      "tag": "hackThebox",
+      "outbounds": [
+        "Auto",
+        "proxy",
+        "direct"
+      ]
+    },
+    {
+      "type": "selector",
+      "tag": "otherGFW",
+      "outbounds": [
+        "Auto",
+        "proxy",
+        "direct"
+      ]
+    },
+    {
+      "type": "urltest",
+      "tag": "Hong Kong🇭🇰",
+      "outbounds": [
+        "{all}"
+      ],
+      "filter": [
+        {
+          "action": "exclude",
+          "keywords": [
+            "Hong Kong|Taiwan|Japan|America|Singapore|Korea|Russia|Philippines|Malaysia|Indonesia|Vietnam|Thailand|India|Australia|United Kingdom|Germany|French|Netherlands|Spain|Türkiye|Argentina|Brazil|Canada|direct|proxy|海外专用"
+          ]
+        },
+        {
+          "action": "include",
+          "keywords": [
+            "香港"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "urltest",
+      "tag": "Taiwan",
+      "outbounds": [
+        "{all}"
+      ],
+      "filter": [
+        {
+          "action": "exclude",
+          "keywords": [
+            "Hong Kong|Taiwan|Japan|America|Singapore|Korea|Russia|Philippines|Malaysia|Indonesia|Vietnam|Thailand|India|Australia|United Kingdom|Germany|French|Netherlands|Spain|Türkiye|Argentina|Brazil|Canada|direct|proxy|海外专用"
+          ]
+        },
+        {
+          "action": "include",
+          "keywords": [
+            "台湾"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "urltest",
+      "tag": "Japan🇯🇵",
+      "outbounds": [
+        "{all}"
+      ],
+      "filter": [
+        {
+          "action": "exclude",
+          "keywords": [
+            "Hong Kong|Taiwan|Japan|America|Singapore|Korea|Russia|Philippines|Malaysia|Indonesia|Vietnam|Thailand|India|Australia|United Kingdom|Germany|French|Netherlands|Spain|Türkiye|Argentina|Brazil|Canada|direct|proxy|海外专用"
+          ]
+        },
+        {
+          "action": "include",
+          "keywords": [
+            "日本"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "urltest",
+      "tag": "America🇺🇸",
+      "outbounds": [
+        "{all}"
+      ],
+      "filter": [
+        {
+          "action": "exclude",
+          "keywords": [
+            "Hong Kong|Taiwan|Japan|America|Singapore|Korea|Russia|Philippines|Malaysia|Indonesia|Vietnam|Thailand|India|Australia|United Kingdom|Germany|French|Netherlands|Spain|Türkiye|Argentina|Brazil|Canada|direct|proxy|海外专用"
+          ]
+        },
+        {
+          "action": "include",
+          "keywords": [
+            "美国"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "urltest",
+      "tag": "Singapore🇸🇬",
+      "outbounds": [
+        "{all}"
+      ],
+      "filter": [
+        {
+          "action": "exclude",
+          "keywords": [
+            "Hong Kong|Taiwan|Japan|America|Singapore|Korea|Russia|Philippines|Malaysia|Indonesia|Vietnam|Thailand|India|Australia|United Kingdom|Germany|French|Netherlands|Spain|Türkiye|Argentina|Brazil|Canada|direct|proxy|海外专用"
+          ]
+        },
+        {
+          "action": "include",
+          "keywords": [
+            "新加坡"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "urltest",
+      "tag": "Korea🇰🇷",
+      "outbounds": [
+        "{all}"
+      ],
+      "filter": [
+        {
+          "action": "exclude",
+          "keywords": [
+            "Hong Kong|Taiwan|Japan|America|Singapore|Korea|Russia|Philippines|Malaysia|Indonesia|Vietnam|Thailand|India|Australia|United Kingdom|Germany|French|Netherlands|Spain|Türkiye|Argentina|Brazil|Canada|direct|proxy|海外专用"
+          ]
+        },
+        {
+          "action": "include",
+          "keywords": [
+            "韩国"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "urltest",
+      "tag": "Russia🇷🇺",
+      "outbounds": [
+        "{all}"
+      ],
+      "filter": [
+        {
+          "action": "exclude",
+          "keywords": [
+            "Hong Kong|Taiwan|Japan|America|Singapore|Korea|Russia|Philippines|Malaysia|Indonesia|Vietnam|Thailand|India|Australia|United Kingdom|Germany|French|Netherlands|Spain|Türkiye|Argentina|Brazil|Canada|direct|proxy|海外专用"
+          ]
+        },
+        {
+          "action": "include",
+          "keywords": [
+            "俄罗斯"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "urltest",
+      "tag": "Philippines🇵🇭",
+      "outbounds": [
+        "{all}"
+      ],
+      "filter": [
+        {
+          "action": "exclude",
+          "keywords": [
+            "Hong Kong|Taiwan|Japan|America|Singapore|Korea|Russia|Philippines|Malaysia|Indonesia|Vietnam|Thailand|India|Australia|United Kingdom|Germany|French|Netherlands|Spain|Türkiye|Argentina|Brazil|Canada|direct|proxy|海外专用"
+          ]
+        },
+        {
+          "action": "include",
+          "keywords": [
+            "菲律宾"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "urltest",
+      "tag": "Malaysia🇲🇾",
+      "outbounds": [
+        "{all}"
+      ],
+      "filter": [
+        {
+          "action": "exclude",
+          "keywords": [
+            "Hong Kong|Taiwan|Japan|America|Singapore|Korea|Russia|Philippines|Malaysia|Indonesia|Vietnam|Thailand|India|Australia|United Kingdom|Germany|French|Netherlands|Spain|Türkiye|Argentina|Brazil|Canada|direct|proxy|海外专用"
+          ]
+        },
+        {
+          "action": "include",
+          "keywords": [
+            "马来西亚"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "urltest",
+      "tag": "Indonesia🇮🇩",
+      "outbounds": [
+        "{all}"
+      ],
+      "filter": [
+        {
+          "action": "exclude",
+          "keywords": [
+            "Hong Kong|Taiwan|Japan|America|Singapore|Korea|Russia|Philippines|Malaysia|Indonesia|Vietnam|Thailand|India|Australia|United Kingdom|Germany|French|Netherlands|Spain|Türkiye|Argentina|Brazil|Canada|direct|proxy|海外专用"
+          ]
+        },
+        {
+          "action": "include",
+          "keywords": [
+            "印尼"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "urltest",
+      "tag": "Vietnam🇻🇳",
+      "outbounds": [
+        "{all}"
+      ],
+      "filter": [
+        {
+          "action": "exclude",
+          "keywords": [
+            "Hong Kong|Taiwan|Japan|America|Singapore|Korea|Russia|Philippines|Malaysia|Indonesia|Vietnam|Thailand|India|Australia|United Kingdom|Germany|French|Netherlands|Spain|Türkiye|Argentina|Brazil|Canada|direct|proxy|海外专用"
+          ]
+        },
+        {
+          "action": "include",
+          "keywords": [
+            "越南"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "urltest",
+      "tag": "Thailand🇹🇭",
+      "outbounds": [
+        "{all}"
+      ],
+      "filter": [
+        {
+          "action": "exclude",
+          "keywords": [
+            "Hong Kong|Taiwan|Japan|America|Singapore|Korea|Russia|Philippines|Malaysia|Indonesia|Vietnam|Thailand|India|Australia|United Kingdom|Germany|French|Netherlands|Spain|Türkiye|Argentina|Brazil|Canada|direct|proxy|海外专用"
+          ]
+        },
+        {
+          "action": "include",
+          "keywords": [
+            "泰国"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "urltest",
+      "tag": "India🇮🇳",
+      "outbounds": [
+        "{all}"
+      ],
+      "filter": [
+        {
+          "action": "exclude",
+          "keywords": [
+            "Hong Kong|Taiwan|Japan|America|Singapore|Korea|Russia|Philippines|Malaysia|Indonesia|Vietnam|Thailand|India|Australia|United Kingdom|Germany|French|Netherlands|Spain|Türkiye|Argentina|Brazil|Canada|direct|proxy|海外专用"
+          ]
+        },
+        {
+          "action": "include",
+          "keywords": [
+            "印度"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "urltest",
+      "tag": "Australia🇦🇺",
+      "outbounds": [
+        "{all}"
+      ],
+      "filter": [
+        {
+          "action": "exclude",
+          "keywords": [
+            "Hong Kong|Taiwan|Japan|America|Singapore|Korea|Russia|Philippines|Malaysia|Indonesia|Vietnam|Thailand|India|Australia|United Kingdom|Germany|French|Netherlands|Spain|Türkiye|Argentina|Brazil|Canada|direct|proxy|海外专用"
+          ]
+        },
+        {
+          "action": "include",
+          "keywords": [
+            "澳洲"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "urltest",
+      "tag": "United Kingdom🇬🇧",
+      "outbounds": [
+        "{all}"
+      ],
+      "filter": [
+        {
+          "action": "exclude",
+          "keywords": [
+            "Hong Kong|Taiwan|Japan|America|Singapore|Korea|Russia|Philippines|Malaysia|Indonesia|Vietnam|Thailand|India|Australia|United Kingdom|Germany|French|Netherlands|Spain|Türkiye|Argentina|Brazil|Canada|direct|proxy|海外专用"
+          ]
+        },
+        {
+          "action": "include",
+          "keywords": [
+            "英国"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "urltest",
+      "tag": "Germany🇩🇪",
+      "outbounds": [
+        "{all}"
+      ],
+      "filter": [
+        {
+          "action": "exclude",
+          "keywords": [
+            "Hong Kong|Taiwan|Japan|America|Singapore|Korea|Russia|Philippines|Malaysia|Indonesia|Vietnam|Thailand|India|Australia|United Kingdom|Germany|French|Netherlands|Spain|Türkiye|Argentina|Brazil|Canada|direct|proxy|海外专用"
+          ]
+        },
+        {
+          "action": "include",
+          "keywords": [
+            "德国"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "urltest",
+      "tag": "French🇫🇷",
+      "outbounds": [
+        "{all}"
+      ],
+      "filter": [
+        {
+          "action": "exclude",
+          "keywords": [
+            "Hong Kong|Taiwan|Japan|America|Singapore|Korea|Russia|Philippines|Malaysia|Indonesia|Vietnam|Thailand|India|Australia|United Kingdom|Germany|French|Netherlands|Spain|Türkiye|Argentina|Brazil|Canada|direct|proxy|海外专用"
+          ]
+        },
+        {
+          "action": "include",
+          "keywords": [
+            "法国"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "urltest",
+      "tag": "Netherlands🇳🇱",
+      "outbounds": [
+        "{all}"
+      ],
+      "filter": [
+        {
+          "action": "exclude",
+          "keywords": [
+            "Hong Kong|Taiwan|Japan|America|Singapore|Korea|Russia|Philippines|Malaysia|Indonesia|Vietnam|Thailand|India|Australia|United Kingdom|Germany|French|Netherlands|Spain|Türkiye|Argentina|Brazil|Canada|direct|proxy|海外专用"
+          ]
+        },
+        {
+          "action": "include",
+          "keywords": [
+            "荷兰"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "urltest",
+      "tag": "Spain🇪🇸",
+      "outbounds": [
+        "{all}"
+      ],
+      "filter": [
+        {
+          "action": "exclude",
+          "keywords": [
+            "Hong Kong|Taiwan|Japan|America|Singapore|Korea|Russia|Philippines|Malaysia|Indonesia|Vietnam|Thailand|India|Australia|United Kingdom|Germany|French|Netherlands|Spain|Türkiye|Argentina|Brazil|Canada|direct|proxy|海外专用"
+          ]
+        },
+        {
+          "action": "include",
+          "keywords": [
+            "西班牙"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "urltest",
+      "tag": "Türkiye🇹🇷",
+      "outbounds": [
+        "{all}"
+      ],
+      "filter": [
+        {
+          "action": "exclude",
+          "keywords": [
+            "Hong Kong|Taiwan|Japan|America|Singapore|Korea|Russia|Philippines|Malaysia|Indonesia|Vietnam|Thailand|India|Australia|United Kingdom|Germany|French|Netherlands|Spain|Türkiye|Argentina|Brazil|Canada|direct|proxy|海外专用"
+          ]
+        },
+        {
+          "action": "include",
+          "keywords": [
+            "土耳其"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "urltest",
+      "tag": "Argentina🇦🇷",
+      "outbounds": [
+        "{all}"
+      ],
+      "filter": [
+        {
+          "action": "exclude",
+          "keywords": [
+            "Hong Kong|Taiwan|Japan|America|Singapore|Korea|Russia|Philippines|Malaysia|Indonesia|Vietnam|Thailand|India|Australia|United Kingdom|Germany|French|Netherlands|Spain|Türkiye|Argentina|Brazil|Canada|direct|proxy|海外专用"
+          ]
+        },
+        {
+          "action": "include",
+          "keywords": [
+            "阿根廷"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "urltest",
+      "tag": "Brazil🇧🇷",
+      "outbounds": [
+        "{all}"
+      ],
+      "filter": [
+        {
+          "action": "exclude",
+          "keywords": [
+            "Hong Kong|Taiwan|Japan|America|Singapore|Korea|Russia|Philippines|Malaysia|Indonesia|Vietnam|Thailand|India|Australia|United Kingdom|Germany|French|Netherlands|Spain|Türkiye|Argentina|Brazil|Canada|direct|proxy|海外专用"
+          ]
+        },
+        {
+          "action": "include",
+          "keywords": [
+            "巴西"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "urltest",
+      "tag": "Canada🇨🇦",
+      "outbounds": [
+        "{all}"
+      ],
+      "filter": [
+        {
+          "action": "exclude",
+          "keywords": [
+            "Hong Kong|Taiwan|Japan|America|Singapore|Korea|Russia|Philippines|Malaysia|Indonesia|Vietnam|Thailand|India|Australia|United Kingdom|Germany|French|Netherlands|Spain|Türkiye|Argentina|Brazil|Canada|direct|proxy|海外专用"
+          ]
+        },
+        {
+          "action": "include",
+          "keywords": [
+            "加拿大"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "direct",
+      "tag": "direct"
+    },
+    {
+      "type": "block",
+      "tag": "block"
+    },
+    {
+      "type": "dns",
+      "tag": "dns-out"
+    }
+  ],
+  "route": {
+    "rules": [
+      {
+        "protocol": "dns",
+        "outbound": "dns-out"
+      },
+      {
+        "clash_mode": "direct",
+        "outbound": "direct"
+      },
+      {
+        "clash_mode": "global",
+        "outbound": "proxy"
+      },
+      {
+        "domain_suffix": [
+          "lens.l.google.com",
+          "docs.google.com",
+          "drive.google.com",
+          "googledrive.com",
+          "googleusercontent.com",
+          "www.googleapis.com",
+          "google.com",
+          "googleapis.com",
+          "gstatic.com"
+        ],
+        "domain_keyword": [
+          "www.google.",
+          "pa.google",
+          "accounts.google."
+        ],
+        "outbound": "google"
+      },
+      {
+        "domain_suffix": [
+          "pscp.tv",
+          "periscope.tv",
+          "t.co",
+          "twimg.co",
+          "twimg.com",
+          "twitpic.com",
+          "twitter.com",
+          "twitter.jp",
+          "vine.co"
+        ],
+        "outbound": "twitter"
+      },
+      {
+        "domain_suffix": [
+          "googlevideo.com",
+          "withyoutube.com",
+          "youtu.be",
+          "youtube.com",
+          "youtubeeducation.com",
+          "youtubegaming.com",
+          "youtubekids.com",
+          "youtube-nocookie.com",
+          "yt.be",
+          "ytimg.com",
+          "youtubei.googleapis.com",
+          "yt3.ggpht.com"
+        ],
+        "outbound": "youTube"
+      },
+      {
+        "domain_suffix": [
+          "t.me",
+          "tdesktop.com",
+          "telegra.ph",
+          "telegram.me",
+          "telegram.org",
+          "telesco.pe"
+        ],
+        "ip_cidr": [
+          "91.108.4.0/22",
+          "91.108.8.0/22",
+          "91.108.12.0/22",
+          "91.108.16.0/22",
+          "91.108.20.0/22",
+          "91.108.56.0/22",
+          "91.105.192.0/23",
+          "149.154.160.0/20",
+          "185.76.151.0/24",
+          "2001:b28:f23d::/48",
+          "2001:b28:f23f::/48",
+          "2001:67c:4e8::/48",
+          "2001:b28:f23c::/48",
+          "2a0a:f280::/32"
+        ],
+        "outbound": "telegram"
+      },
+      {
+        "domain_suffix": [
+          "ext-twitch.tv",
+          "jtvnw.net",
+          "ttvnw.net",
+          "twitch.tv",
+          "twitchcdn.net",
+          "twitch-ext.rootonline.de"
+        ],
+        "outbound": "twitch"
+      },
+      {
+        "domain_suffix": [
+          "cdninstagram.com",
+          "instagram.com"
+        ],
+        "outbound": "instagram"
+      },
+      {
+        "domain_suffix": [
+          "pscdn.co",
+          "scdn.co",
+          "spotify.com",
+          "spoti.fi"
+        ],
+        "domain_keyword": [
+          "spotify.com",
+          "-spotify-com"
+        ],
+        "outbound": "spotify"
+      },
+      {
+        "domain_suffix": [
+          "netflix.com",
+          "netflix.net",
+          "nflxext.com",
+          "nflximg.com",
+          "nflximg.net",
+          "nflxso.net",
+          "nflxvideo.net"
+        ],
+        "domain_keyword": [
+          "netflixdnstest",
+          "apiproxy-device-prod-nlb-",
+          "dualstack.apiproxy-"
+        ],
+        "outbound": "netflix"
+      },
+      {
+        "domain_suffix": [
+          "pixiv.net",
+          "pixiv.org",
+          "pximg.net"
+        ],
+        "outbound": "pixiv"
+      },
+      {
+        "domain_suffix": [
+          "redd.it",
+          "reddit.com",
+          "redditmedia.com"
+        ],
+        "domain_keyword": [
+          "reddit"
+        ],
+        "outbound": "reddit"
+      },
+      {
+        "domain_suffix": [
+          "github.map.fastly.net",
+          "github.global.ssl.fastly.net",
+          "github.io",
+          "github.com",
+          "githubstatus.com",
+          "github.community",
+          "githubusercontent.com"
+        ],
+        "outbound": "github"
+      },
+      {
+        "domain_suffix": [
+          "openai.com"
+        ],
+        "outbound": "openAI"
+      },
+      {
+        "domain_suffix": [
+          "hoyolab.com"
+        ],
+        "outbound": "hoyolab"
+      },
+      {
+        "domain_suffix": [
+          "yuanshen.com",
+          "hoyoverse.com"
+        ],
+        "outbound": "genshin"
+      },
+      {
+        "domain_suffix": [
+          "discord.com",
+          "discordapp.com",
+          "discordapp.net"
+        ],
+        "outbound": "discord"
+      },
+      {
+        "domain_suffix": [
+          "steamdb.info"
+        ],
+        "outbound": "steamdb"
+      },
+      {
+        "domain_suffix": [
+          "wikipedia.org",
+          "wikimedia.org"
+        ],
+        "outbound": "wikipedia"
+      },
+      {
+        "domain_suffix": [
+          "x-plane.com"
+        ],
+        "outbound": "xPlane"
+      },
+      {
+        "domain_suffix": [
+          "tapapis.com"
+        ],
+        "domain_keyword": [
+          "phigros",
+          "pigeon"
+        ],
+        "outbound": "phigros"
+      },
+      {
+        "domain_suffix": [
+          "dilong.us"
+        ],
+        "outbound": "dilong"
+      },
+      {
+        "domain_suffix": [
+          "hackthebox.com"
+        ],
+        "outbound": "hackTheBox"
+      },
+      {
+        "domain_suffix": [
+          "zhbyg.top",
+          "v2ex.com",
+          "fakenamegenerator.com",
+          "greatfire.org",
+          "crunchyroll.com",
+          "wordlegame.org",
+          "eitherchoice.com",
+          "archive.org",
+          "wallhaven.cc"
+        ],
+        "domain_keyword": [
+          "sci-hub"
+        ],
+        "outbound": "otherGFW"
+      },
+      {
+        "domain_suffix": [
+          "flyert.com",
+          "gandi.net",
+          "snapdrop.net",
+          "download.jetbrains.com",
+          "origin-a.akamaihd.ne",
+          "outlook.office365.com",
+          "smtp-mail.outlook.com",
+          "smtp.office365.com",
+          "dl.delivery.mp.microsoft.com",
+          "update.microsoft.com",
+          "windowsupdate.com",
+          "windowsupdate.microsoft.com",
+          "download.microsoft.com",
+          "wustat.windows.com",
+          "ntservicepack.microsoft.com",
+          "paypal.com",
+          "paypal.me",
+          "paypal-mktg.com",
+          "paypalobjects.com",
+          "cm.steampowered.com",
+          "api.steampowered.com",
+          "ip.istatmenus.app",
+          "sms.imagetasks.com",
+          "netspeedtestmaster.com",
+          "speedtest.macpaw.com",
+          "acg.rip",
+          "animebytes.tv",
+          "awesome-hd.me",
+          "broadcasthe.net",
+          "chdbits.co",
+          "classix-unlimited.co.uk",
+          "comicat.org",
+          "empornium.me",
+          "gazellegames.net",
+          "hdbits.org",
+          "hdchina.org",
+          "hddolby.com",
+          "hdhome.org",
+          "hdsky.me",
+          "icetorrent.org",
+          "jpopsuki.eu",
+          "keepfrds.com",
+          "madsrevolution.net",
+          "morethan.tv",
+          "m-team.cc",
+          "myanonamouse.net",
+          "nanyangpt.com",
+          "ncore.cc",
+          "open.cd",
+          "ourbits.club",
+          "passthepopcorn.me",
+          "privatehd.to",
+          "pterclub.com",
+          "redacted.ch",
+          "springsunday.net",
+          "tjupt.org",
+          "totheglory.im"
+        ],
+        "ip_cidr": [
+          "182.254.116.0/24",
+          "203.205.238.0/23",
+          "203.205.254.0/23"
+        ],
+        "outbound": "direct"
+      }
+    ]
+  }
+}
