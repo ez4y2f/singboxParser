@@ -109,7 +109,7 @@
       "outbounds": [
         "{sub}"
       ],
-      "filter": [
+      "regex": [
         {
           "action": "exclude",
           "keywords": [
@@ -353,7 +353,7 @@
       "outbounds": [
         "{sub}"
       ],
-      "filter": [
+      "regex": [
         {
           "action": "exclude",
           "keywords": [
@@ -374,7 +374,7 @@
       "outbounds": [
         "{sub}"
       ],
-      "filter": [
+      "regex": [
         {
           "action": "exclude",
           "keywords": [
@@ -395,7 +395,7 @@
       "outbounds": [
         "{sub}"
       ],
-      "filter": [
+      "regex": [
         {
           "action": "exclude",
           "keywords": [
@@ -416,7 +416,7 @@
       "outbounds": [
         "{sub}"
       ],
-      "filter": [
+      "regex": [
         {
           "action": "exclude",
           "keywords": [
@@ -437,7 +437,7 @@
       "outbounds": [
         "{sub}"
       ],
-      "filter": [
+      "regex": [
         {
           "action": "exclude",
           "keywords": [
@@ -458,7 +458,7 @@
       "outbounds": [
         "{sub}"
       ],
-      "filter": [
+      "regex": [
         {
           "action": "exclude",
           "keywords": [
@@ -479,7 +479,7 @@
       "outbounds": [
         "{sub}"
       ],
-      "filter": [
+      "regex": [
         {
           "action": "exclude",
           "keywords": [
@@ -500,7 +500,7 @@
       "outbounds": [
         "{sub}"
       ],
-      "filter": [
+      "regex": [
         {
           "action": "exclude",
           "keywords": [
@@ -521,7 +521,7 @@
       "outbounds": [
         "{sub}"
       ],
-      "filter": [
+      "regex": [
         {
           "action": "exclude",
           "keywords": [
@@ -542,7 +542,7 @@
       "outbounds": [
         "{sub}"
       ],
-      "filter": [
+      "regex": [
         {
           "action": "exclude",
           "keywords": [
@@ -563,7 +563,7 @@
       "outbounds": [
         "{sub}"
       ],
-      "filter": [
+      "regex": [
         {
           "action": "exclude",
           "keywords": [
@@ -584,7 +584,7 @@
       "outbounds": [
         "{sub}"
       ],
-      "filter": [
+      "regex": [
         {
           "action": "exclude",
           "keywords": [
@@ -605,7 +605,7 @@
       "outbounds": [
         "{sub}"
       ],
-      "filter": [
+      "regex": [
         {
           "action": "exclude",
           "keywords": [
@@ -626,7 +626,7 @@
       "outbounds": [
         "{sub}"
       ],
-      "filter": [
+      "regex": [
         {
           "action": "exclude",
           "keywords": [
@@ -647,7 +647,7 @@
       "outbounds": [
         "{sub}"
       ],
-      "filter": [
+      "regex": [
         {
           "action": "exclude",
           "keywords": [
@@ -668,7 +668,7 @@
       "outbounds": [
         "{sub}"
       ],
-      "filter": [
+      "regex": [
         {
           "action": "exclude",
           "keywords": [
@@ -689,7 +689,7 @@
       "outbounds": [
         "{sub}"
       ],
-      "filter": [
+      "regex": [
         {
           "action": "exclude",
           "keywords": [
@@ -710,7 +710,7 @@
       "outbounds": [
         "{sub}"
       ],
-      "filter": [
+      "regex": [
         {
           "action": "exclude",
           "keywords": [
@@ -731,7 +731,7 @@
       "outbounds": [
         "{sub}"
       ],
-      "filter": [
+      "regex": [
         {
           "action": "exclude",
           "keywords": [
@@ -752,7 +752,7 @@
       "outbounds": [
         "{sub}"
       ],
-      "filter": [
+      "regex": [
         {
           "action": "exclude",
           "keywords": [
@@ -773,7 +773,7 @@
       "outbounds": [
         "{sub}"
       ],
-      "filter": [
+      "regex": [
         {
           "action": "exclude",
           "keywords": [
@@ -794,7 +794,7 @@
       "outbounds": [
         "{sub}"
       ],
-      "filter": [
+      "regex": [
         {
           "action": "exclude",
           "keywords": [
@@ -815,7 +815,7 @@
       "outbounds": [
         "{sub}"
       ],
-      "filter": [
+      "regex": [
         {
           "action": "exclude",
           "keywords": [

@@ -400,8 +400,8 @@ export default {
         }
         */
 
-        let configURL = btoa(params.get("config"));
-        let templateURL = btoa(params.get("template"));
+        let configURL = atob(params.get("config"));
+        let templateURL = atob(params.get("template"));
 
         let configResp = await fetch(configURL);
         let templateResp = await fetch(templateURL);
@@ -418,7 +418,7 @@ export default {
         let rawtemplate = await templateResp.text();
 
         let configObj = JSON.parse(rawtemplate);
-        let subscriptions = btoa(rawconfig).split("\r\n");
+        let subscriptions = atob(rawconfig).split("\r\n");
         let nodes = [];
 
 
@@ -457,8 +457,8 @@ export default {
                 let regInc;
                 let regExc;
                 dic["filter"].forEach((dic0) => {
-                    if(dic0["action"] === "include") regInc = new RegExp(dic0["keywords"]);
-                    else regExc = new RegExp(dic0["keywords"]);
+                    if(dic0["action"] === "include") regInc = new RegExp(dic0["regex"][0]);
+                    else regExc = new RegExp(dic0["regex"][0]);
                 });
                 nodes.forEach((node) => {
                     if(regInc.test(node.description) && !(regExc.test(node.description))) {
@@ -588,7 +588,7 @@ export default {
                     break;
             }
         });
-        return new Response(configObj, {
+        return new Response(JSON.stringify(configObj), {
             headers: {
                 "content-type": "application/json",
             }, status: 200
