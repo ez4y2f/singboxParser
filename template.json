@@ -322,15 +322,6 @@
     },
     {
       "type": "selector",
-      "tag": "dilong",
-      "outbounds": [
-        "Auto",
-        "proxy",
-        "direct"
-      ]
-    },
-    {
-      "type": "selector",
       "tag": "hackTheBox",
       "outbounds": [
         "Auto",
@@ -1071,12 +1062,6 @@
       },
       {
         "domain_suffix": [
-          "dilong.us"
-        ],
-        "outbound": "dilong"
-      },
-      {
-        "domain_suffix": [
           "hackthebox.com"
         ],
         "outbound": "hackTheBox"
@@ -1091,7 +1076,8 @@
           "wordlegame.org",
           "eitherchoice.com",
           "archive.org",
-          "wallhaven.cc"
+          "wallhaven.cc",
+          "qiuyin.us"
         ],
         "domain_keyword": [
           "sci-hub"
