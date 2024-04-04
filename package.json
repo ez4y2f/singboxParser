@@ -12,6 +12,7 @@
     "crypto-js": "^4.2.0",
     "cryptojs": "^2.5.3",
     "js-base64": "^3.7.7",
-    "jsencrypt": "^3.3.2"
+    "jsencrypt": "^3.3.2",
+    "wrangler": "^3.46.0"
   }
 }
