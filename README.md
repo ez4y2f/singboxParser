@@ -15,7 +15,7 @@ then bind your domain
 I offer my deployed Parser for free \
 If I exceed my data limit, I'll **permanently** stop to offer it publicly \
 Use link below: \
-`https://sb.y2f.xyz/parse?config=<YOUR-SUBSCRIBE-URL-BASE64>&template=aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL2V6NHkyZi9zaW5nYm94UGFyc2VyL21hc3Rlci90ZW1wbGF0ZS5qc29u`
+`https://sb.y2futils.top/parse?config=<YOUR-SUBSCRIBE-URL-BASE64>&template=aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL2V6NHkyZi9zaW5nYm94UGFyc2VyL21hc3Rlci90ZW1wbGF0ZS5qc29u`
 \(template: https://raw.githubusercontent.com/ez4y2f/singboxParser/master/template.json)
 ## Warn
 I will NOT provide ANY proxy nodes \
